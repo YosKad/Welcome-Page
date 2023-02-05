@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    
 
     <title>Alert-HW</title>
     <style>
-
-        /* design the body */
+      /* design the body */
       body {
         background-color: whitesmoke;
         background-image: url(background.png);
@@ -19,7 +17,7 @@
         background-size: cover;
       }
 
-/* design the main contaier */
+      /* design the main contaier */
       .container {
         height: 100vh;
         display: flex;
@@ -45,7 +43,12 @@
       .main:hover {
         box-shadow: 30px 16px 16px #00ffff69;
       }
-
+      @media only screen and (max-width: 600px) {
+        .main {
+            height: 30vh;
+            width: 60vw;
+        }
+      }
     </style>
   </head>
   <body>
@@ -65,13 +68,12 @@
     </div>
 
     <script>
-
-// ---- asking the user for his name --- //
+      // ---- asking the user for his name --- //
       fullName = prompt(
         "Hello Guest :) \nWe Would like to know you \nPlease enter your Full Name(first&last)"
       );
 
-    // --- give the button on click fun to show alert with the user full name --- //
+      // --- give the button on click fun to show alert with the user full name --- //
       function loginBtn() {
         swal({
           title: "Welcome!",
