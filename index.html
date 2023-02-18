@@ -15,39 +15,43 @@
         background-image: url(background.png);
         background-repeat: no-repeat;
         background-size: cover;
-        box-sizing: border-box;
       }
 
       /* design the main container */
       .container {
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-gap: 40px;
+        padding: 80px 10px;
+        margin-top: 50px;
       }
 
       /* center the div inside the main container and decorate it */
-      .main {
+      .section {
         height: 50vh;
         border: 3px solid #019292;
         border-radius: 8px;
         box-shadow: 30px -16px #00ffff69;
-        width: 50vw;
-        height: 60vh;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        flex-direction: column;
+        transition: box-shadow 1s;
+      }
+      form{
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: column;
-        transition: box-shadow 1s;
-        
       }
 
-      .main:hover {
+      .section:hover {
         box-shadow: 30px 16px 16px #00ffff69;
       }
+
       @media only screen and (max-width: 600px) {
-        .main {
+        .section {
           height: 55vh;
           width: 65vw;
         }
@@ -59,7 +63,13 @@
       }
 
       #sum {
-        background-color: #0C3357;
+        background-color: #0c3357;
+        color: white;
+        border-radius: 5px;
+      }
+
+      #result {
+        background-color: #2d90eb;
         color: white;
         border-radius: 5px;
       }
@@ -71,19 +81,39 @@
   </head>
   <body>
     <div class="container">
-      <div class="main">
+      <!-- create the login section  -->
+
+      <div class="section" id="login">
         <h1 class="text-xl text-center underline text-indigo-100">
           Welcome Page!
         </h1>
-        <button
-          type="button"
-          class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 m-3"
-          onclick="loginBtn()"
-        >
-          Click to Login!
-        </button>
+
+        <form id="login-form">
+          <label for="username">Enter Your User Name:</label><br />
+          <input type="text" id="username" name="username" />
+
+          <label for="password">Enter Your Password:</label><br />
+          <input type="password" id="password" name="password" />
+
+          <button
+            type="submit"
+            class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 m-3"
+          >
+            Login!
+          </button>
+        </form>
+      </div>
+
+      <!-- end of the login section  -->
+
+      <!-- create the Calculatorsection  -->
+
+      <div class="section">
+        <h1 class="text-xl text-center underline text-indigo-100">
+          Calculator
+        </h1>
         <label for="num1">Enter First Number:</label><br />
-        <input type="number" id="num1" name="num1" inputmode="numeric"/>
+        <input type="number" id="num1" name="num1" inputmode="numeric" />
         <label for="operator">Select operator:</label>
         <select id="operator" name="operator">
           <option value="+">+</option>
@@ -93,7 +123,7 @@
           <option value="%">%</option>
         </select>
         <label for="num2">Enter Second Number:</label><br />
-        <input type="number" id="num2" name="num2" inputmode="numeric"/>
+        <input type="number" id="num2" name="num2" inputmode="numeric" />
         <button
           type="button"
           class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 m-3"
@@ -103,47 +133,124 @@
         </button>
         <div id="sum" class="m-3"></div>
       </div>
+      <!-- end of Calculator section -->
+
+       <!-- creating the fizzbuzz section -->
+<div class="section">
+  <h1 class="text-xl text-center underline text-indigo-100">
+    FooBar
+  </h1>
+  <div class="text-indigo-100 text-center">
+  <p > 
+    Check if the givin number is divid by 2 or 3 or both 
+    <ul>
+   <li>Baz = 2 & 3 </li> 
+   <li>Bar = 2 </li>
+   <li>Foo = 3</li>
+  </ul>
+  </p>
+</div>
+  <label for="foonum">Choose a number between 1-10 </label><br>
+  <input type="number" id="foonum" name="foonum" inputmode="numeric" >
+<button type="button" class="text-white bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2 m-3"
+onclick="bazBtn()"
+> Check! </button>
+<div id="result" class="m-3"></div>
+</div>
+
     </div>
 
     <script>
       // ---- asking the user for his name --- //
-      fullName = prompt(
-        "Hello Guest :) \nWe Would like to know you \nPlease enter your Full Name(first&last)"
-      );
+      // fullName = prompt(
+      //   "Hello Guest :) \nWe Would like to know you \nPlease enter your Full Name(first&last)"
+      // );
 
       // --- give the button on click fun to show alert with the user full name --- //
-      function loginBtn() {
-        swal({
-          title: "Welcome!",
-          text: `Hello ${fullName} We glad to see you here!`,
-          icon: "success",
-        });
-      }
+      // function loginBtn() {
+      //   swal({
+      //     title: "Welcome!",
+      //     text: `Hello ${fullName} We glad to see you here!`,
+      //     icon: "success",
+      //   });
+      // }
+      // --- end of function the the button alert login --- //
 
-
+      // ------ creating the caculator function ---- //
       function sumBtn() {
         var num1 = document.getElementById("num1").value;
         var num2 = document.getElementById("num2").value;
         var operator = document.getElementById("operator").value;
 
         var sum;
-        if (operator == "+"){
+        if (operator == "+") {
           result = parseInt(num1) + parseInt(num2);
         } else if (operator == "-") {
           result = parseInt(num1) - parseInt(num2);
-        }  else if (operator == "*") {
+        } else if (operator == "*") {
           result = parseInt(num1) * parseInt(num2);
-      } else if (operator == "/") {
+        } else if (operator == "/") {
           result = parseInt(num1) / parseInt(num2);
-      } else if (operator == "%") {
+        } else if (operator == "%") {
           result = parseInt(num1) % parseInt(num2);
-      } 
+        }
 
-      document.getElementById("sum").innerHTML = "Result: " + result;
+        document.getElementById("sum").innerHTML = "Result: " + result;
+      }
+      // ------ end of the caculator function ---- //
 
-    }
+      // ---- create the login function --- //
 
+      // adding value to default username and password
+      const defaultUsername = "admin";
+      const defaultPassword = "123";
+
+      // Get login form and add submit event listener
+      const loginForm = document.getElementById("login-form");
+      loginForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Get username and password values
+        const username = document.getElementById("username").value;
+        const password = document.getElementById("password").value;
+
+        // Check if username and password are correct
+        if (username === defaultUsername && password === defaultPassword) {
+          alert(`Welcome ${username} !`);
+        } else {
+          alert(`Incorrect username or password. Please try again.`);
+          loginForm.reset();
+          loginForm.username.focus();
+          decrementAttempts();
+        }
+      });
+
+      // Define number of login attempts
+      let attempts = 3;
+
+      // Decrement attempts and hide login form if no attempts left
+      function decrementAttempts() {
+        attempts--;
+        if (attempts === 0) {
+          loginForm.style.display = "none";
+        }
+      }
+
+      // ----- creating the function to check if this bar baz or foo ----- //
+
+      function bazBtn (){
+      var number = document.getElementById("foonum").value;
+     
+       if (number%2 === 0 && number%3 === 0) {
+      document.getElementById("result").innerHTML = "Baz " + number;
+     } else if (number%2 === 0) {
+      document.getElementById("result").innerHTML = "Bar " + number;
+     } else if (number%3 === 0) 
+     document.getElementById("result").innerHTML = "Foo " + number;
+        else console.log(number);
+     }
+
+  
     </script>
   </body>
 </html>
-
