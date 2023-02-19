@@ -1,0 +1,75 @@
+ /* design the body */
+ body {
+    background-color: whitesmoke;
+    background-image: url(back.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  /* design the main container */
+  .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 40px;
+    padding: 80px 10px;
+    margin-top: 50px;
+    margin-left: 50px;
+    margin-right: 50px;
+  }
+
+  /* center the div inside the main container and decorate it */
+  .section {
+    height: 50vh;
+    border: 3px solid #019292;
+    border-radius: 8px;
+    box-shadow: 30px -16px #00ffff69;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: box-shadow 1s;
+  }
+  form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+
+  .section:hover {
+    box-shadow: 30px 16px 16px #00ffff69;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .section {
+      height: 55vh;
+      width: 65vw;
+    }
+  }
+  label {
+    margin-top: 10px;
+    margin-bottom: 0px;
+    color: white;
+  }
+
+  #sum {
+    background-color: #0c3357;
+    color: white;
+    border-radius: 5px;
+  }
+
+  #result {
+    background-color: #2d90eb;
+    color: white;
+    border-radius: 5px;
+  }
+  #attempt {
+    background-color: #2d90eb;
+    color: white;
+    border-radius: 5px;
+  }
+  #operator {
+    background-color: #019292;
+    border: 10px;
+  }
